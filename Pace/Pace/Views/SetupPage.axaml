@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:controls="using:Material.Styles.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:Pace.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.Views.SetupPage"
+             x:DataType="viewmodels:MainViewModel"
+             Background="{Binding ThemeViewModel.VantaColor}"
+             >
+    <Grid Margin="24">
+
+            <Border CornerRadius="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding ThemeViewModel.ObsidianColor}">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="20">
+                    <StackPanel Spacing="16">
+                        <TextBlock Margin="0,16,0,0" FontWeight="Bold" HorizontalAlignment="Left"  Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="30" Text="欢迎来到 Pace"></TextBlock>
+                        <TextBlock HorizontalAlignment="Left"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" Text="在开始之前,我们要获取一些信息!"></TextBlock>
+                        <TextBlock Margin="0,32,0,0" HorizontalAlignment="Left"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" Text=
+                        "体重(kg)"
+                        ></TextBlock>
+                        <Border CornerRadius="10"  Background="{Binding ThemeViewModel.DarkColor}"  HorizontalAlignment="Stretch" Padding="12,0">
+                            <TextBox CaretBrush="{Binding ThemeViewModel.LightForeground}" x:Name="Weight" Padding="16,12" CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch"  Foreground="{Binding ThemeViewModel.LightForeground}"  FontSize="15" PlaceholderText="例如 65.3">
+                                
+                            </TextBox>
+                        </Border>
+                        
+
+                        <TextBlock HorizontalAlignment="Left"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" Text=
+                        "身高(cm)"
+                        ></TextBlock>
+                        <Border CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch" Padding="12,0">
+                            <TextBox CaretBrush="{Binding ThemeViewModel.LightForeground}" x:Name="Height" Padding="16,12" CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" PlaceholderText="例如 165.5"></TextBox>
+                        </Border>
+                        
+
+                        <TextBlock HorizontalAlignment="Left"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" Text=
+                        "年龄(周岁)"
+                        ></TextBlock>
+                        <Border CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch" Padding="12,0">
+                            <TextBox CaretBrush="{Binding ThemeViewModel.LightForeground}"  x:Name="Age" Padding="16,12" CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch"  Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" PlaceholderText="例如 12"></TextBox>
+                        </Border>
+                        <TextBlock HorizontalAlignment="Left"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" Text=
+                        "性别"
+                        ></TextBlock>
+                        <Border CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch" Padding="12,0">
+                            <TextBox CaretBrush="{Binding ThemeViewModel.LightForeground}" x:Name="Gender" Padding="16,12" CornerRadius="10" Background="{Binding ThemeViewModel.DarkColor}" HorizontalAlignment="Stretch"   Foreground="{Binding ThemeViewModel.LightForeground}" FontSize="15" PlaceholderText="男/女/不愿透露..."></TextBox>
+                        </Border>
+                        
+
+                        
+                        <Button Padding="32,8" x:Name="Confirm" Click="Confirm_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding ThemeViewModel.LightForeground}" Content="提交" BorderThickness="1" BorderBrush="{Binding ThemeViewModel.ThemeColor}" >
+                            <Button.Effect>
+                                <DropShadowEffect  Color="{Binding ThemeViewModel.LightForeground}" BlurRadius="7"></DropShadowEffect>
+                                
+                            </Button.Effect>
+                        </Button>
+
+                    </StackPanel>
+                    
+                </ScrollViewer>
+            </Border>
+
+
+
+
+
+    </Grid>
+</UserControl>

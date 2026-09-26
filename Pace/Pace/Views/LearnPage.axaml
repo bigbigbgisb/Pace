@@ -1,0 +1,68 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:Pace.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.Views.LearnPage"
+             x:DataType="local:LearnPageViewModel"
+             Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.ObsidianColor}"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.VantaColor}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="8*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="24" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="🔥"></TextBlock>
+                     <TextBlock Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" >
+                        <Run Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="BMR"></Run>
+                         <Run Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding  MainViewViewModel.MainViewModel.UserProfile.BasalMetabolicRate}"></Run>
+                     </TextBlock>
+                </Grid>
+
+            </Grid>
+        </Border>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <Grid HorizontalAlignment="Center" Margin="40,20">
+                <ItemsControl ItemsSource="{Binding  MainViewViewModel.MainViewModel.DailySportRepository.DailySports}">
+                    <ItemsControl.DataTemplates >
+                        <DataTemplate DataType="local:DailySport">
+                            <Grid>
+
+                                <Grid >
+                                    <Grid Margin="0,16,0,0">
+                                        <Ellipse x:Name="Shadow" HorizontalAlignment="Center"  Height="64" Width="72"  Margin="{Binding Margin}"  Fill="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkThemeColor}" ></Ellipse>
+                                    </Grid>
+                                    <Grid PointerPressed="Button_PointerPressed" PointerReleased="Button_PointerReleased">
+                                        <Ellipse Tag="0" x:Name="Button"  HorizontalAlignment="Center"  Height="64" Width="72"  Margin="{Binding Margin}"  Fill="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.ThemeColor}"></Ellipse>
+                                        <TextBlock Padding="0,20,0,0" TextAlignment="Center" HorizontalAlignment="Center" Height="64" Width="72"  Margin="{Binding Margin}" FontSize="24" Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding SportItems[0].PreviewContent}"></TextBlock>
+
+                                    </Grid>
+                                </Grid>
+
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </ItemsControl.DataTemplates>
+                </ItemsControl>
+
+
+            </Grid>
+
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

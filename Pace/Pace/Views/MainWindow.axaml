@@ -1,0 +1,14 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Pace.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="using:Pace.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pace.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Pace">
+        <Grid>
+            <ContentControl x:Name="ContentControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></ContentControl>
+        </Grid>
+</Window>

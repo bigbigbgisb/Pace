@@ -1,0 +1,54 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:Pace.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Pace.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.Views.MainView"
+             x:DataType="local:MainViewViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TransitioningContentControl Content="{Binding CurrentPage,Mode=TwoWay}"  Grid.Row="0">
+            <TransitioningContentControl.PageTransition>
+                <CrossFade Duration="0:0:0.3"></CrossFade>
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
+        <Border Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}">
+
+
+            <Grid x:Name="Navs" Margin="0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Home" CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Command="{Binding ToHomeCommand}" Grid.Column="0"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock  Text="⌂" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Button>
+                <Button x:Name="Achievement"  CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Grid.Column="1"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock   Text="♛" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Button>
+                <Button x:Name="Moments" CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Grid.Column="2"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock  Text="◉" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Button>
+                <Button x:Name="Profile" CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Grid.Column="3"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock  Text="⛯" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Button>
+            </Grid>
+
+
+        </Border>
+    </Grid>
+</UserControl>

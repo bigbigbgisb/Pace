@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:Pace.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.Views.TransitionPage"
+             x:DataType="viewmodels:TransitionPageViewModel"
+             Background="{Binding MainViewModel.ThemeViewModel.ObsidianColor}"
+             >
+    <Grid>
+        <StackPanel Spacing="16" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Height="64" Width="64" Source="{Binding RandomTransitionInfo.Image}" RenderOptions.BitmapInterpolationMode="None"></Image>
+            <TextBlock x:Name="Message" FontSize="16" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}"></TextBlock>
+        </StackPanel>
+        <TextBlock FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20"  Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding RandomTransitionInfo.Message}"></TextBlock>
+    </Grid>
+</UserControl>

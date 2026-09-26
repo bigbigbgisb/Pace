@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="Pace/Pace.Android/Pace.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Pace/Pace.Browser/Pace.Browser.csproj" />
+  <Project Path="Pace/Pace.Desktop/Pace.Desktop.csproj" />
+  <Project Path="Pace/Pace.iOS/Pace.iOS.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Pace/Pace/Pace.csproj" />
+</Solution>

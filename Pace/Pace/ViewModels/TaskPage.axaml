@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="using:System"
+             xmlns:viewmodels="using:Pace.ViewModels"
+             xmlns:views="using:Pace.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.Views.TaskPage"
+             x:DataType="viewmodels:TaskPageViewModel"
+             Background="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.ObsidianColor}"
+             >
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="←" Command="{Binding BackCommand}" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Background="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.DarkColor}" HorizontalAlignment="Left" VerticalAlignment="Center"></Button>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Spacing="16" >
+
+                <TextBlock FontSize="24" Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding CurrentSportItem.PreviewContent}"></TextBlock>
+                <TextBlock FontSize="16" Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding CurrentSportItem.MainContent}"></TextBlock>
+
+                <ItemsControl ItemsSource="{Binding CurrentImages}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.DataTemplates>
+
+                        <DataTemplate x:DataType="Bitmap">
+                            <Image Source="{Binding}" Margin="8" MaxHeight="144"  MaxWidth="160"></Image>
+                        </DataTemplate>
+                    </ItemsControl.DataTemplates>
+                </ItemsControl>
+
+
+            </StackPanel>
+        </ScrollViewer>
+        
+        <Button Content="{Binding TimingButtonViewModel.TimingButtonText}"  Margin="12" Command="{Binding NextRoleCommand}"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2" Background="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.ThemeColor}" Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" FontSize="16"></Button>
+
+
+    </Grid>
+</UserControl>
