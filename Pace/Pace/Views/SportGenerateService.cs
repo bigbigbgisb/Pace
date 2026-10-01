@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using Pace.ViewModels;
 
 namespace Pace.Views
 {
@@ -57,6 +58,7 @@ namespace Pace.Views
                     index++;
                 }
             });
+
             return new DailySport([..sportsList]);
         }
     }

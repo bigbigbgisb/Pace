@@ -15,6 +15,7 @@ namespace Pace.Views
         public abstract float StretchCoefficient { get; }   
         public abstract short BurnedCalories { get; }
         public abstract string LegendRootPath { get; }
+        public abstract string Id { get; }
 
 
     }

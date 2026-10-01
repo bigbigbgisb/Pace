@@ -10,17 +10,18 @@ namespace Pace.Views
 {
     public partial class SetupPage : UserControl
     {
+        private readonly MainViewModel _viewModel;
         public SetupPage(MainViewModel? mainViewModel)
         {
             InitializeComponent();
             ArgumentNullException.ThrowIfNull(mainViewModel);
-            DataContext = mainViewModel;
-
+            _viewModel = mainViewModel;
+            DataContext = _viewModel;
         }
 
         public SetupPage()
         {
-
+            _viewModel = null!;
         }
         private async void Confirm_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -28,16 +29,15 @@ namespace Pace.Views
             {
                 bool? isDataValid = await CheckData();
                 if (isDataValid is null) return;
-                else if (isDataValid is bool b && b) contentControl.Content = null;
+                else if (isDataValid is bool b && b) { contentControl.Content = null; }
             }
         }
 
         private async Task<bool?> CheckData()
         {
             if (Confirm.Tag is bool b && b) return null;
-            if (DataContext is not MainViewModel mainViewModel) return null;
             Confirm.Tag = true;
-            (string tipText, bool isError) = mainViewModel.UserProfile.CheckProfileData(Weight.Text!, Height.Text!, Age.Text!, Gender.Text!);
+            (string tipText, bool isError) = _viewModel.UserProfile.CheckProfileData(Weight.Text!, Height.Text!, Age.Text!, Gender.Text!);
             if (isError)
             {
                 Confirm.Content = tipText + "错误";

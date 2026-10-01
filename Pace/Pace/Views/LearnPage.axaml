@@ -4,8 +4,9 @@
              xmlns:local="using:Pace.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Pace.ViewModels"
              x:Class="Pace.Views.LearnPage"
-             x:DataType="local:LearnPageViewModel"
+             x:DataType="vm:LearnPageViewModel"
              Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.ObsidianColor}"
              >
     <Grid>
@@ -38,7 +39,7 @@
             <Grid HorizontalAlignment="Center" Margin="40,20">
                 <ItemsControl ItemsSource="{Binding  MainViewViewModel.MainViewModel.DailySportRepository.DailySports}">
                     <ItemsControl.DataTemplates >
-                        <DataTemplate DataType="local:DailySport">
+                        <DataTemplate DataType="vm:DailySport">
                             <Grid>
 
                                 <Grid >

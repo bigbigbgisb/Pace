@@ -33,7 +33,7 @@ namespace Pace.ViewModels
         public TransitionPageViewModel(MainViewModel mainViewModel)
         {
             MainViewModel = mainViewModel;
-            Random random = new((int)DateTime.Now.TimeOfDay.TotalMilliseconds);
+            Random random = Random.Shared;
             int index = random.Next(0, transitionInfos.Length);
             TransitionInfo randomTransitionInfo = transitionInfos[index];
             randomTransitionInfo.LoadImage();

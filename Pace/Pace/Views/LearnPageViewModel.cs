@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Pace.ViewModels;
+using Pace.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pace.Views
+namespace Pace.ViewModels
 {
     public partial class LearnPageViewModel(MainViewViewModel mainViewViewModel) : ObservableObject
     {

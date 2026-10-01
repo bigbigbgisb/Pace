@@ -56,14 +56,16 @@ namespace Pace.Views
         {
             if (Age > 18)
             {
-                BasalMetabolicRate = Gender == UserGender.Man 
+                BasalMetabolicRate = 
+                    Gender == UserGender.Man 
                     ? (short)(10 * Weight + 6.25 * Height - 5 * Age + 5) 
                     : Gender == UserGender.Woman ? (short)(10 * Weight + 6.25 * Height - 5 * Age - 161) 
                     : (short)(10 * Weight + 6.25 * Height - 5 * Age - 78);
             }
             else
             {
-                BasalMetabolicRate = Gender == UserGender.Man 
+                BasalMetabolicRate =
+                    Gender == UserGender.Man 
                     ? (short)(17.686 * Weight + 658.2) 
                     : Gender == UserGender.Woman 
                     ? (short)(13.384 * Weight + 692.6) 

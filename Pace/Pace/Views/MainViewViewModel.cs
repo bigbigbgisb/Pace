@@ -2,6 +2,7 @@
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Pace.ViewModel;
 using Pace.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,11 @@ namespace Pace.Views
 {
     public partial class MainViewViewModel : ObservableObject
     {
+        
         [ObservableProperty]
         MainViewModel _mainViewModel;
+        [ObservableProperty]
+        NavButtonViewModel _navButtonViewModel;
         [ObservableProperty]
         bool isSetup = false;
         [ObservableProperty]
@@ -32,7 +36,32 @@ namespace Pace.Views
         {
             if (IsSetup)
             {
+                NavButtonViewModel.SelectNavCommand.Execute("Home");
                 CurrentPage = LearnPage;
+            }
+        }
+        [RelayCommand]
+        private void ToAchievement()
+        {
+            if (IsSetup)
+            {
+                NavButtonViewModel.SelectNavCommand.Execute("Achievement");
+            }
+        }
+        [RelayCommand]
+        private void ToMoments()
+        {
+            if (IsSetup)
+            {
+                NavButtonViewModel.SelectNavCommand.Execute("Moments");
+            }
+        }
+        [RelayCommand]
+        private void ToProfile()
+        {
+            if (IsSetup)
+            {
+                NavButtonViewModel.SelectNavCommand.Execute("Profile");
             }
         }
 
@@ -55,8 +84,8 @@ namespace Pace.Views
 
                     MainViewModel.DailySportRepository.DailySports = dailySportList;
                     MainViewModel.DailySportRepository.SetMargins();
-
-                    IsSetup = true;
+                    MainViewModel.ApplicationDataService.WriteData(MainViewModel,MainViewModel.BaseDirectoryPath);
+                    ToHome();
                 }
                 , LearnPage);
             }
@@ -100,10 +129,26 @@ namespace Pace.Views
 
         public MainViewViewModel(MainViewModel mainViewModel)
         {
-            SetupPage = new(mainViewModel);
-            LearnPage = new(this);
             MainViewModel = mainViewModel;
-            CurrentPage = SetupPage;
+            SetupPage = new(MainViewModel);
+            LearnPage = new(this);
+            NavButtonViewModel = new(mainViewModel.ThemeViewModel.VantaColor, mainViewModel.ThemeViewModel.LightForeground);
+            if (!mainViewModel.ApplicationDataService.IsApplicationSetup(MainViewModel.BaseDirectoryPath))
+            {
+                CurrentPage = SetupPage;
+            }
+            else
+            {
+                if (mainViewModel.ApplicationDataService.ReadData(MainViewModel.BaseDirectoryPath) is UserApplicationData userApplicationData)
+                {
+                    mainViewModel.ApplicationDataService.ApplyTo(userApplicationData, this);
+                    ToHome();
+                }
+                    
+
+            }
+            
+            
 
         }
 

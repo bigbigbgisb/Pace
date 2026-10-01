@@ -34,17 +34,17 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Home" CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Command="{Binding ToHomeCommand}" Grid.Column="0"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
-                    <TextBlock  Text="⌂" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Button x:Name="Home" CornerRadius="32" Background="{Binding NavButtonViewModel.HomeNavButtonData.Background}" Margin="10" Command="{Binding ToHomeCommand}" Grid.Column="0"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock  Text="⌂" Foreground="{Binding NavButtonViewModel.HomeNavButtonData.Foreground}" HorizontalAlignment="Center"  VerticalAlignment="Center"></TextBlock>
                 </Button>
-                <Button x:Name="Achievement"  CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Grid.Column="1"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
-                    <TextBlock   Text="♛" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Button x:Name="Achievement"  CornerRadius="32" Background="{Binding NavButtonViewModel.AchievementNavButtonData.Background}" Margin="10" Command="{Binding ToAchievementCommand}" Grid.Column="1"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock   Text="♛" Foreground="{Binding NavButtonViewModel.AchievementNavButtonData.Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Button>
-                <Button x:Name="Moments" CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Grid.Column="2"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
-                    <TextBlock  Text="◉" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Button x:Name="Moments" CornerRadius="32" Background="{Binding NavButtonViewModel.MomentNavButtonData.Background}" Margin="10" Command="{Binding ToMomentsCommand}" Grid.Column="2"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock  Text="◉" Foreground="{Binding NavButtonViewModel.MomentNavButtonData.Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Button>
-                <Button x:Name="Profile" CornerRadius="32" Background="{Binding MainViewModel.ThemeViewModel.VantaColor}" Click="NavButtonClicked" Margin="10" Grid.Column="3"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
-                    <TextBlock  Text="⛯" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Button x:Name="Profile" CornerRadius="32" Background="{Binding NavButtonViewModel.ProfileNavButtonData.Background}" Margin="10" Command="{Binding ToProfileCommand}" Grid.Column="3"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="64">
+                    <TextBlock  Text="⛯" Foreground="{Binding NavButtonViewModel.ProfileNavButtonData.Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </Button>
             </Grid>
 

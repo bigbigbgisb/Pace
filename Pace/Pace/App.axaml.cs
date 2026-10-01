@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Pace.ViewModels;
 using Pace.Views;
+using System;
 
 namespace Pace;
 
@@ -22,16 +23,20 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(AppContext.BaseDirectory) 
             };
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {
-            singleViewFactoryApplicationLifetime.MainViewFactory = () => new MainView(new MainViewModel());
+#if ANDROID
+            singleViewFactoryApplicationLifetime.MainViewFactory = () => new MainView(new MainViewModel(Android.App.Application.Context.FilesDir!.AbsolutePath) );
+#endif
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new MainView(new MainViewModel());
+#if ANDROID
+            singleViewPlatform.MainView = new MainView(new MainViewModel(Android.App.Application.Context.FilesDir!.AbsolutePath));
+#endif
         }
 
         base.OnFrameworkInitializationCompleted();
