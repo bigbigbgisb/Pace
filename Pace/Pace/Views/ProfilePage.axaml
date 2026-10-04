@@ -1,0 +1,112 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="using:Pace.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="using:System"
+             xmlns:viewmodels="using:Pace.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.Views.ProfilePage"
+             x:DataType="viewmodels:ProfilePageViewModel"
+
+             >
+    <UserControl.Background>
+        <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+            <GradientStop Color="#181717" Offset="0.0"></GradientStop>
+            <GradientStop Color="#0E0E10" Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <Grid Margin="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="96"></RowDefinition>
+                    <RowDefinition Height="96"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Height="200" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <TextBlock  FontSize="24" FontWeight="Bold" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}">Jerk Off Right Now!</TextBlock>
+                </Border>
+
+                <!--此处用material的按钮，省去手写卡片交互感-->
+                <Button HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.DarkColor}" CornerRadius="8" >
+                    <Grid Margin="4" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="身高 ↕"></TextBlock>
+                        <NumericUpDown Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="1"  FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Value="{Binding HeightInput}" ShowButtonSpinner="False"></NumericUpDown>
+
+                    </Grid>
+                </Button>
+                <Button HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.DarkColor}" CornerRadius="8" >
+                    <Grid Margin="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="体重 ↔"></TextBlock>
+                        <NumericUpDown Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="1" FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Value="{Binding WeightInput}" ShowButtonSpinner="False"></NumericUpDown>
+
+                    </Grid>
+                </Button>
+                <Button HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="2" Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.DarkColor}" CornerRadius="8" >
+                    <Grid Margin="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="年龄 ◷"></TextBlock>
+                        <NumericUpDown Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="1" FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Value="{Binding AgeInput}" ShowButtonSpinner="False"></NumericUpDown>
+
+
+                    </Grid>
+                </Button>
+                <Button HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="2" Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.DarkColor}" CornerRadius="8" >
+                    <Grid Margin="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                            <TextBlock Margin="0,4,0,0" FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="BMR ♨"></TextBlock>
+                            <TextBlock FontWeight="Bold" Margin="4" Grid.Row="1" FontSize="16" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding MainViewViewModel.MainViewModel.UserProfile.BasalMetabolicRate}" ></TextBlock>
+
+
+                    </Grid>
+                </Button>
+                <ItemsControl HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding TipText}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.DataTemplates>
+                        <DataTemplate DataType="system:String">
+                            <TextBlock FontSize="12" Foreground="{Binding $parent[UserControl].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.ThemeColor}" Text="{Binding}"></TextBlock>
+                        </DataTemplate>
+                    </ItemsControl.DataTemplates>
+                </ItemsControl>
+                <Button Grid.Row="4" Grid.ColumnSpan="2" Command="{Binding RecalculateCommand}" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" BorderBrush="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.ThemeColor}" Content="立即更新运动计划!" IsVisible="{Binding IsRecalculateButtonVisible}" BorderThickness="2"></Button>
+            </Grid>
+
+        </ScrollViewer>
+    </Grid>
+
+
+</UserControl>

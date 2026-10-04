@@ -7,34 +7,20 @@
              xmlns:vm="using:Pace.ViewModels"
              x:Class="Pace.Views.LearnPage"
              x:DataType="vm:LearnPageViewModel"
-             Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.ObsidianColor}"
+
              >
+    <UserControl.Background>
+        <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+            <GradientStop Color="#181717" Offset="0.0"></GradientStop>
+            <GradientStop Color="#0E0E10" Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="0"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.VantaColor}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="8*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" Margin="12">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="24" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="🔥"></TextBlock>
-                     <TextBlock Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" >
-                        <Run Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="BMR"></Run>
-                         <Run Foreground="{Binding  MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding  MainViewViewModel.MainViewModel.UserProfile.BasalMetabolicRate}"></Run>
-                     </TextBlock>
-                </Grid>
 
-            </Grid>
-        </Border>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
             <Grid HorizontalAlignment="Center" Margin="40,20">
                 <ItemsControl ItemsSource="{Binding  MainViewViewModel.MainViewModel.DailySportRepository.DailySports}">

@@ -14,13 +14,13 @@ namespace Pace.Views
 {
     public partial class MainViewViewModel : ObservableObject
     {
-        
+
         [ObservableProperty]
         MainViewModel _mainViewModel;
         [ObservableProperty]
         NavButtonViewModel _navButtonViewModel;
         [ObservableProperty]
-        bool isSetup = false;
+        bool _isSetup = false;
         [ObservableProperty]
         object? _currentPage;
         [ObservableProperty]
@@ -30,6 +30,8 @@ namespace Pace.Views
         LearnPage _learnPage;
         [ObservableProperty]
         TaskPage? _taskPage;
+        [ObservableProperty]
+        ProfilePage _profilePage;
 
         [RelayCommand]
         private void ToHome()
@@ -62,7 +64,29 @@ namespace Pace.Views
             if (IsSetup)
             {
                 NavButtonViewModel.SelectNavCommand.Execute("Profile");
+                CurrentPage = ProfilePage;
             }
+        }
+        public void CalculateDailySports()
+        {
+            _ = ShowTransitionAsync("正在分配每日个性化运动...", async () =>
+            {
+                List<DailySport> dailySportList = [];
+
+                var service = new SportGenerateService();
+                for (int i = 1; i <= 12; i++)
+                {
+                    var dailySport = await service.GenerateDailySports(MainViewModel.UserProfile.BasalMetabolicRate, MainViewModel.UserProfile.Height, MainViewModel.UserProfile.Weight);
+                    dailySportList.Add(dailySport);
+                }
+
+
+                MainViewModel.DailySportRepository.DailySports = dailySportList;
+                MainViewModel.DailySportRepository.SetMargins();
+                MainViewModel.ApplicationDataService.WriteData(MainViewModel, MainViewModel.BaseDirectoryPath);
+                ToHome();
+            }
+            , LearnPage);
         }
 
         partial void OnCurrentPageChanged(object? value)
@@ -70,36 +94,15 @@ namespace Pace.Views
 
             if (value is null)
             {
-                _ = ShowTransitionAsync("正在分配每日个性化运动...", async () =>
-                {
-                    List<DailySport> dailySportList = [];
-
-                    var service = new SportGenerateService();
-                    for (int i = 1; i <= 12; i++)
-                    {
-                        var dailySport = await service.GenerateDailySports(MainViewModel.UserProfile.BasalMetabolicRate, MainViewModel.UserProfile.Height, MainViewModel.UserProfile.Weight);
-                        dailySportList.Add(dailySport);
-                    }
-
-
-                    MainViewModel.DailySportRepository.DailySports = dailySportList;
-                    MainViewModel.DailySportRepository.SetMargins();
-                    MainViewModel.ApplicationDataService.WriteData(MainViewModel,MainViewModel.BaseDirectoryPath);
-                    ToHome();
-                }
-                , LearnPage);
+                CalculateDailySports();
+                IsSetup = true;
+                if (ProfilePage is null) ProfilePage = new(this);
             }
 
 
         }
-        /// <summary>
-        /// 该函数为私有函数，用于ShowTransitionAsync与ShowFakeTransitionAsync，仅用于抽离函数体，提高优雅性
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="function"></param>
-        /// <param name="targetPage"></param>
-        /// <param name="interval"></param>
-        /// <returns></returns>
+
+        //该函数为私有函数，用于ShowTransitionAsync与ShowFakeTransitionAsync，仅用于抽离函数体，提高优雅性
         private async Task ShowTransitionBaseAsync(string message, Func<Task> function, UserControl? targetPage, int interval = 2000)
         {
             ArgumentNullException.ThrowIfNull(targetPage);
@@ -132,6 +135,7 @@ namespace Pace.Views
             MainViewModel = mainViewModel;
             SetupPage = new(MainViewModel);
             LearnPage = new(this);
+            
             NavButtonViewModel = new(mainViewModel.ThemeViewModel.VantaColor, mainViewModel.ThemeViewModel.LightForeground);
             if (!mainViewModel.ApplicationDataService.IsApplicationSetup(MainViewModel.BaseDirectoryPath))
             {
@@ -144,11 +148,9 @@ namespace Pace.Views
                     mainViewModel.ApplicationDataService.ApplyTo(userApplicationData, this);
                     ToHome();
                 }
-                    
-
             }
-            
-            
+            ProfilePage = new(this);
+
 
         }
 

@@ -35,21 +35,21 @@ namespace Pace.ViewModel
         {
             _ordinaryColor = ordinaryColor;
             _selectedColor = selectedColor;
-            HomeNavButtonData = new() { Background = _ordinaryColor,Foreground = _selectedColor};
+            HomeNavButtonData = new() { Background = _ordinaryColor, Foreground = _selectedColor };
             AchievementNavButtonData = new() { Background = _ordinaryColor, Foreground = _selectedColor };
-            MomentNavButtonData =  new() { Background = _ordinaryColor, Foreground = _selectedColor };
+            MomentNavButtonData = new() { Background = _ordinaryColor, Foreground = _selectedColor };
             ProfileNavButtonData = new() { Background = _ordinaryColor, Foreground = _selectedColor };
             _navDatas = [
-            
+
                 HomeNavButtonData,
                 AchievementNavButtonData,
                 MomentNavButtonData,
                 ProfileNavButtonData,
             ];
         }
-            
-            
-        
+
+
+
         [RelayCommand]
         private void SelectNav(string name)
         {
@@ -64,13 +64,13 @@ namespace Pace.ViewModel
                 data.Background = _ordinaryColor;
                 data.Foreground = _selectedColor;
             }
-                
+
             navButtonData.Background = _selectedColor;
             navButtonData.Foreground = _ordinaryColor;
 
 
 
         }
-        
+
     }
 }

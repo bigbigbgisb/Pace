@@ -52,7 +52,7 @@ namespace Pace.Views
             }
             return (tipText, isError);
         }
-        private void CalculateBasalMetabolicRate()
+        public void CalculateBasalMetabolicRate()
         {
             if (Age > 18)
             {
