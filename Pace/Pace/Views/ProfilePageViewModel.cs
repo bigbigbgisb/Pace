@@ -24,6 +24,9 @@ namespace Pace.ViewModels
         [ObservableProperty]
         bool _isRecalculateButtonVisible;
         [ObservableProperty]
+        double _targetCalories = Math.Round((double)(mainViewViewModel.MainViewModel.UserProfile.BasalMetabolicRate / 7),2);
+        
+        [ObservableProperty]
         ObservableCollection<string> _tipText = [];
         [RelayCommand]
         private void Recalculate()
@@ -87,7 +90,8 @@ namespace Pace.ViewModels
         {
             if (ConfirmBase(value, valueName, maxValue, minValue, out decimal result))
             {
-                editOperation((short)result);  
+                editOperation((short)result);
+                MainViewViewModel.MainViewModel.UserProfile.CalculateBasalMetabolicRate();
             }
             IsRecalculateButtonVisible = TipText.Count == 0;
         }
@@ -96,6 +100,7 @@ namespace Pace.ViewModels
             if (ConfirmBase(value, valueName, maxValue, minValue, out decimal result))
             {
                 editOperation((float)result);
+                MainViewViewModel.MainViewModel.UserProfile.CalculateBasalMetabolicRate();
             }
             IsRecalculateButtonVisible = TipText.Count == 0;
         }

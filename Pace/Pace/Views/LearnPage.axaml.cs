@@ -29,28 +29,6 @@ namespace Pace.Views
         }
 
 
-        private void Button_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
-        {
-            if (sender is Grid grid && grid.DataContext is DailySport dailySport)
-            {
-                var children = grid.Children;
-                children.Where(x => x is Ellipse ellipse).ToList()[0].Margin = dailySport.Margin + new Thickness(0,12,0,0);
-                children.Where(x => x is TextBlock textBlock).ToList()[0].Margin = dailySport.Margin + new Thickness(0, 12, 0, 0);
-            }
-        }
 
-        private async void Button_PointerReleased(object? sender, Avalonia.Input.PointerReleasedEventArgs e)
-        {
-            if (sender is Grid grid && grid.DataContext is DailySport dailySport)
-            {
-                var children = grid.Children;
-                Ellipse ellipse = (children.Where(x => x is Ellipse ellipse).ToList()[0] as Ellipse)!;
-                TextBlock textBlock = (children.Where(x => x is TextBlock textBlock).ToList()[0] as TextBlock)!;
-                ellipse.Margin = dailySport.Margin;
-                textBlock.Margin = dailySport.Margin;
-                if (_viewModel is not null)
-                   await  _viewModel.ShowTask(dailySport);
-            }
-        }
     }
 }

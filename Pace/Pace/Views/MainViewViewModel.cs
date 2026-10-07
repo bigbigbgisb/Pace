@@ -15,8 +15,12 @@ namespace Pace.Views
     public partial class MainViewViewModel : ObservableObject
     {
 
+        private readonly SportGenerateService _service = new();
         [ObservableProperty]
         MainViewModel _mainViewModel;
+
+        [ObservableProperty]
+        DispatcherTimer _timer;
         [ObservableProperty]
         NavButtonViewModel _navButtonViewModel;
         [ObservableProperty]
@@ -31,7 +35,7 @@ namespace Pace.Views
         [ObservableProperty]
         TaskPage? _taskPage;
         [ObservableProperty]
-        ProfilePage _profilePage;
+        ProfilePage? _profilePage;
 
         [RelayCommand]
         private void ToHome()
@@ -73,20 +77,19 @@ namespace Pace.Views
             {
                 List<DailySport> dailySportList = [];
 
-                var service = new SportGenerateService();
-                for (int i = 1; i <= 12; i++)
+
+                for (int i = 1; i <= 3; i++)
                 {
-                    var dailySport = await service.GenerateDailySports(MainViewModel.UserProfile.BasalMetabolicRate, MainViewModel.UserProfile.Height, MainViewModel.UserProfile.Weight);
+                    var dailySport = await _service.GenerateDailySports(MainViewModel.UserProfile.BasalMetabolicRate, MainViewModel.UserProfile.Height, MainViewModel.UserProfile.Weight);
                     dailySportList.Add(dailySport);
                 }
 
 
                 MainViewModel.DailySportRepository.DailySports = dailySportList;
-                MainViewModel.DailySportRepository.SetMargins();
                 MainViewModel.ApplicationDataService.WriteData(MainViewModel, MainViewModel.BaseDirectoryPath);
                 ToHome();
             }
-            , LearnPage);
+                , LearnPage);
         }
 
         partial void OnCurrentPageChanged(object? value)
@@ -126,7 +129,7 @@ namespace Pace.Views
         }
         public async Task ShowFakeTransitionAsync(string message, Action function, UserControl? targetPage, int interval = 2000)
         {
-            await ShowTransitionBaseAsync(message, async () => { function(); }, targetPage, interval);
+            await ShowTransitionBaseAsync(message, async () => function(), targetPage, interval);
         }
 
 
@@ -135,7 +138,24 @@ namespace Pace.Views
             MainViewModel = mainViewModel;
             SetupPage = new(MainViewModel);
             LearnPage = new(this);
-            
+            Timer = new()
+            {
+                Interval = TimeSpan.FromSeconds(30)
+            };
+
+            Timer.Tick += (s, e) =>
+            {
+                Cache? cache = MainViewModel.ApplicationDataService.ReadCache(MainViewModel.BaseDirectoryPath);
+                if (cache is not null)
+                {
+                    if (cache.DateTime.Date < DateTime.Now.Date)
+                    {
+                        MainViewModel.ApplicationDataService.ResetDailyData(this);
+                    }
+                }
+                MainViewModel.ApplicationDataService.WriteCache(MainViewModel.BaseDirectoryPath);
+            };
+            Timer.Start();
             NavButtonViewModel = new(mainViewModel.ThemeViewModel.VantaColor, mainViewModel.ThemeViewModel.LightForeground);
             if (!mainViewModel.ApplicationDataService.IsApplicationSetup(MainViewModel.BaseDirectoryPath))
             {
@@ -145,11 +165,12 @@ namespace Pace.Views
             {
                 if (mainViewModel.ApplicationDataService.ReadData(MainViewModel.BaseDirectoryPath) is UserApplicationData userApplicationData)
                 {
-                    mainViewModel.ApplicationDataService.ApplyTo(userApplicationData, this);
-                    ToHome();
+                    mainViewModel.ApplicationDataService.ApplyTo(userApplicationData, this); 
                 }
+                ProfilePage = new(this);
+
             }
-            ProfilePage = new(this);
+
 
 
         }

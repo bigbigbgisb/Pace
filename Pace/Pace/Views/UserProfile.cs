@@ -82,6 +82,12 @@ namespace Pace.Views
         short _age;
         [ObservableProperty]
         short _basalMetabolicRate;
+        [ObservableProperty]
+        short _burnedCalories;
+        [ObservableProperty]
+        int _winingStreakDays = 0;
+        [ObservableProperty]
+        bool _hasTodayCheckedIn;
 
     }
 }

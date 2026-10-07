@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:Pace.ViewModels"
+             xmlns:v="using:Pace.Views"
              x:Class="Pace.Views.LearnPage"
              x:DataType="vm:LearnPageViewModel"
 
@@ -17,30 +18,110 @@
     </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
         </Grid.RowDefinitions>
+        <Border Margin="0,20" CornerRadius="10,0,10,0" Padding="24" Background="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.DarkColor}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock FontWeight="Bold" TextWrapping="Wrap" Margin="12" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" FontSize="32">Learning Page</TextBlock>
+                <TextBlock Grid.Row="1" FontWeight="Bold" TextWrapping="Wrap" Margin="12" Foreground="{Binding MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" FontSize="18">这是今日可供您选择的方案!</TextBlock>
+            </Grid>
+
+        </Border>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-            <Grid HorizontalAlignment="Center" Margin="40,20">
+
+            <Grid  Margin="40,20">
                 <ItemsControl ItemsSource="{Binding  MainViewViewModel.MainViewModel.DailySportRepository.DailySports}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                     <ItemsControl.DataTemplates >
                         <DataTemplate DataType="vm:DailySport">
-                            <Grid>
-
+                            <Border Margin="12" Background="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.ClassicGrey}" HorizontalAlignment="Stretch">
                                 <Grid >
-                                    <Grid Margin="0,16,0,0">
-                                        <Ellipse x:Name="Shadow" HorizontalAlignment="Center"  Height="64" Width="72"  Margin="{Binding Margin}"  Fill="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkThemeColor}" ></Ellipse>
-                                    </Grid>
-                                    <Grid PointerPressed="Button_PointerPressed" PointerReleased="Button_PointerReleased">
-                                        <Ellipse Tag="0" x:Name="Button"  HorizontalAlignment="Center"  Height="64" Width="72"  Margin="{Binding Margin}"  Fill="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.ThemeColor}"></Ellipse>
-                                        <TextBlock Padding="0,20,0,0" TextAlignment="Center" HorizontalAlignment="Center" Height="64" Width="72"  Margin="{Binding Margin}" FontSize="24" Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding SportItems[0].PreviewContent}"></TextBlock>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="9*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                                                <GradientStop Color="#376EA7" Offset="0.0"></GradientStop>
+                                                <GradientStop Color="#FFFFFF" Offset="1.0"></GradientStop>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Grid>
+                                            <TextBlock Margin="4" Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">Sport Page - Pace 2003</TextBlock>
+                                            <Border  VerticalAlignment="Center" Margin="4" HorizontalAlignment="Right"  Background="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.ClassicGrey}">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">×</TextBlock>
+                                            </Border>
+                                        </Grid>
 
+                                    </Border>
+                                    <Grid Grid.Row="1" Margin="12">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="8*"></RowDefinition>
+                                            <RowDefinition Height="2*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Border  Background="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.LightForeground}">
+                                            <StackPanel Spacing="12" HorizontalAlignment="Stretch">
+                                                <TextBlock Margin="4" Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="24">
+                                                    运动简述
+                                                </TextBlock>
+
+                                                <ItemsControl ItemsSource="{Binding SportItems}">
+                                                    <ItemsControl.DataTemplates>
+                                                        <DataTemplate DataType="vm:ISportItem">
+                                                            <StackPanel>
+                                                                <StackPanel Spacing="12" Margin="4,4,4,12">
+                                                                    <TextBlock Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16" Text="{Binding PreviewContent}"></TextBlock>
+                                                                    <TextBlock Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">
+                                                                        <Run>肌肉系数</Run>
+                                                                        <Run Text="{Binding MuscleCoefficient}"></Run>
+                                                                    </TextBlock>
+                                                                    <TextBlock Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">
+                                                                        <Run>有氧系数</Run>
+                                                                        <Run Text="{Binding CardioCoefficient}"></Run>
+                                                                    </TextBlock>
+                                                                    <TextBlock Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">
+                                                                        <Run>无氧系数</Run>
+                                                                        <Run Text="{Binding AnaerobicCoefficient}"></Run>
+                                                                    </TextBlock>
+                                                                    <TextBlock Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">
+                                                                        <Run>拉伸系数</Run>
+                                                                        <Run Text="{Binding StretchCoefficient}"></Run>
+                                                                    </TextBlock>
+                                                                    <TextBlock Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" FontSize="16">
+                                                                        <Run>消耗热量</Run>
+                                                                        <Run Text="{Binding BurnedCalories}"></Run>
+                                                                    </TextBlock>
+
+                                                                </StackPanel>
+
+                                                            </StackPanel>
+
+
+
+                                                        </DataTemplate>
+                                                    </ItemsControl.DataTemplates>
+                                                </ItemsControl>
+
+                                            </StackPanel>
+
+                                        </Border>
+                                        <Button Grid.Row="1" CornerRadius="0" HorizontalAlignment="Right"  Content="开始(S)" FontSize="12" Margin="0,4,0,0" CommandParameter="{Binding}" Foreground="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.DarkForeground}" Background="{Binding $parent[ScrollViewer].DataContext.MainViewViewModel.MainViewModel.ThemeViewModel.ClassicGrey}" Command="{Binding $parent[ScrollViewer].DataContext.ShowTaskCommand}" ></Button>
                                     </Grid>
+
                                 </Grid>
-
-
-                            </Grid>
+                            </Border>
 
                         </DataTemplate>
                     </ItemsControl.DataTemplates>

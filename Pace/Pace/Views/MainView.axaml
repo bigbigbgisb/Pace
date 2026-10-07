@@ -17,27 +17,40 @@
         
         <Grid.RowDefinitions>
 			<RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 		<Border Grid.Row="0" Background="{Binding  MainViewModel.ThemeViewModel.VantaColor}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"></ColumnDefinition>
-					<ColumnDefinition Width="8*"></ColumnDefinition>
 					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
 				<Grid Grid.Column="0" Margin="12">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto"></ColumnDefinition>
 						<ColumnDefinition Width="Auto"></ColumnDefinition>
 					</Grid.ColumnDefinitions>
-					<TextBlock FontSize="24" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="🔥"></TextBlock>
+					<TextBlock FontSize="24" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="⚡"></TextBlock>
 					<TextBlock Grid.Column="1" VerticalAlignment="Center"  HorizontalAlignment="Center" >
 						<Run Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" Text="BMR"></Run>
 						<Run Foreground="{Binding  MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding  MainViewModel.UserProfile.BasalMetabolicRate}"></Run>
 					</TextBlock>
 				</Grid>
+                <Grid Grid.Column="2" Margin="12,12,16,12">
+                    <Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+                    <TextBlock IsVisible="{Binding MainViewModel.UserProfile.HasTodayCheckedIn}" FontSize="24" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="🔥"></TextBlock>
+                    <TextBlock IsVisible="{Binding !MainViewModel.UserProfile.HasTodayCheckedIn}" FontSize="24" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="💨"></TextBlock>
+                    <TextBlock Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Center" >
+						<Run Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" Text="Combo" ></Run>
+                        <Run Foreground="{Binding  MainViewModel.ThemeViewModel.LightForeground}" Text="{Binding MainViewModel.UserProfile.WiningStreakDays}"></Run>
+                        <Run Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" Text="Days"></Run>
+					</TextBlock>
+                </Grid>
 
 			</Grid>
 		</Border>

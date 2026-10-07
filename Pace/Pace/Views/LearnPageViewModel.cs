@@ -13,8 +13,8 @@ namespace Pace.ViewModels
     {
         [ObservableProperty]
         MainViewViewModel _mainViewViewModel = mainViewViewModel;
-
-        public async Task ShowTask(DailySport dailySport)
+        [RelayCommand]
+        private async Task ShowTask(DailySport dailySport)
         {
             MainViewViewModel.TaskPage = new TaskPage(dailySport, MainViewViewModel);
             await MainViewViewModel.ShowFakeTransitionAsync("正在加载关卡噢...", () =>

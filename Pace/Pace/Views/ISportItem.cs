@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pace.Views
+namespace Pace.ViewModels
 {
     public interface ISportItem
     {

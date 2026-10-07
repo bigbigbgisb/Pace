@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Pace.ViewModels;
 
 namespace Pace.Views
 {
@@ -16,7 +17,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.25f;
             public float AnaerobicCoefficient { get; init; } = 0.70f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 5;
+            public short BurnedCalories { get; init; } = 61;
             public string LegendRootPath { get; init; } = "SportItemImages\\DumbbellBicepsCurl";
         }
 
@@ -29,7 +30,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.30f;
             public float AnaerobicCoefficient { get; init; } = 0.60f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 4;
+            public short BurnedCalories { get; init; } = 53;
             public string LegendRootPath { get; init; } = "SportItemImages\\Plank";
         }
 
@@ -42,7 +43,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.50f;
             public float AnaerobicCoefficient { get; init; } = 0.70f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 7;
+            public short BurnedCalories { get; init; } = 88;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -55,7 +56,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.35f;
             public float AnaerobicCoefficient { get; init; } = 0.70f;
             public float StretchCoefficient { get; init; } = 0.10f;
-            public short BurnedCalories { get; init; } = 7;
+            public short BurnedCalories { get; init; } = 88;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -68,7 +69,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.30f;
             public float AnaerobicCoefficient { get; init; } = 0.85f;
             public float StretchCoefficient { get; init; } = 0.10f;
-            public short BurnedCalories { get; init; } = 8;
+            public short BurnedCalories { get; init; } = 140;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -81,7 +82,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.30f;
             public float AnaerobicCoefficient { get; init; } = 0.50f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 5;
+            public short BurnedCalories { get; init; } = 67;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -94,7 +95,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.90f;
             public float AnaerobicCoefficient { get; init; } = 0.50f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 10;
+            public short BurnedCalories { get; init; } = 140;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -107,7 +108,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.95f;
             public float AnaerobicCoefficient { get; init; } = 0.60f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 11;
+            public short BurnedCalories { get; init; } = 158;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -120,7 +121,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.95f;
             public float AnaerobicCoefficient { get; init; } = 0.90f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 14;
+            public short BurnedCalories { get; init; } = 175;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -133,7 +134,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.30f;
             public float AnaerobicCoefficient { get; init; } = 0.90f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 9;
+            public short BurnedCalories { get; init; } = 105;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -146,7 +147,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.25f;
             public float AnaerobicCoefficient { get; init; } = 0.80f;
             public float StretchCoefficient { get; init; } = 0.10f;
-            public short BurnedCalories { get; init; } = 7;
+            public short BurnedCalories { get; init; } = 88;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -159,7 +160,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.95f;
             public float AnaerobicCoefficient { get; init; } = 0.40f;
             public float StretchCoefficient { get; init; } = 0.10f;
-            public short BurnedCalories { get; init; } = 10;
+            public short BurnedCalories { get; init; } = 145;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -172,7 +173,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.85f;
             public float AnaerobicCoefficient { get; init; } = 0.40f;
             public float StretchCoefficient { get; init; } = 0.10f;
-            public short BurnedCalories { get; init; } = 8;
+            public short BurnedCalories { get; init; } = 119;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -185,7 +186,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.90f;
             public float AnaerobicCoefficient { get; init; } = 0.50f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 10;
+            public short BurnedCalories { get; init; } = 123;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -198,7 +199,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.25f;
             public float AnaerobicCoefficient { get; init; } = 0.10f;
             public float StretchCoefficient { get; init; } = 0.80f;
-            public short BurnedCalories { get; init; } = 3;
+            public short BurnedCalories { get; init; } = 44;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -211,7 +212,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.10f;
             public float AnaerobicCoefficient { get; init; } = 0.05f;
             public float StretchCoefficient { get; init; } = 0.90f;
-            public short BurnedCalories { get; init; } = 2;
+            public short BurnedCalories { get; init; } = 40;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -224,7 +225,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.95f;
             public float AnaerobicCoefficient { get; init; } = 0.60f;
             public float StretchCoefficient { get; init; } = 0.10f;
-            public short BurnedCalories { get; init; } = 12;
+            public short BurnedCalories { get; init; } = 175;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -237,7 +238,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.90f;
             public float AnaerobicCoefficient { get; init; } = 0.70f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 11;
+            public short BurnedCalories { get; init; } = 140;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -250,7 +251,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.20f;
             public float AnaerobicCoefficient { get; init; } = 0.40f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 4;
+            public short BurnedCalories { get; init; } = 53;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -263,7 +264,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.25f;
             public float AnaerobicCoefficient { get; init; } = 0.50f;
             public float StretchCoefficient { get; init; } = 0.25f;
-            public short BurnedCalories { get; init; } = 4;
+            public short BurnedCalories { get; init; } = 53;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -276,7 +277,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.45f;
             public float AnaerobicCoefficient { get; init; } = 0.65f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 6;
+            public short BurnedCalories { get; init; } = 88;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -289,7 +290,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.25f;
             public float AnaerobicCoefficient { get; init; } = 0.50f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 5;
+            public short BurnedCalories { get; init; } = 67;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -302,7 +303,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.30f;
             public float AnaerobicCoefficient { get; init; } = 0.55f;
             public float StretchCoefficient { get; init; } = 0.20f;
-            public short BurnedCalories { get; init; } = 6;
+            public short BurnedCalories { get; init; } = 70;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -315,7 +316,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.70f;
             public float AnaerobicCoefficient { get; init; } = 0.85f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 12;
+            public short BurnedCalories { get; init; } = 172;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -328,7 +329,7 @@ namespace Pace.Views
             public float CardioCoefficient { get; init; } = 0.85f;
             public float AnaerobicCoefficient { get; init; } = 0.60f;
             public float StretchCoefficient { get; init; } = 0.15f;
-            public short BurnedCalories { get; init; } = 9;
+            public short BurnedCalories { get; init; } = 123;
             public string LegendRootPath { get; init; } = "";
         }
 
@@ -360,7 +361,6 @@ namespace Pace.Views
             new KettlebellSwing(),
             new RowingMachine(),
         ];
-
 
     }
 }

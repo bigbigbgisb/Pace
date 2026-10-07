@@ -10,7 +10,7 @@ namespace Pace.Views
 {
     public partial class SetupPage : UserControl
     {
-        private readonly MainViewModel _viewModel;
+        private readonly MainViewModel? _viewModel;
         public SetupPage(MainViewModel? mainViewModel)
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace Pace.Views
 
         public SetupPage()
         {
-            _viewModel = null!;
+            
         }
         private async void Confirm_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -36,6 +36,7 @@ namespace Pace.Views
         private async Task<bool?> CheckData()
         {
             if (Confirm.Tag is bool b && b) return null;
+            if (_viewModel is null) return null;
             Confirm.Tag = true;
             (string tipText, bool isError) = _viewModel.UserProfile.CheckProfileData(Weight.Text!, Height.Text!, Age.Text!, Gender.Text!);
             if (isError)

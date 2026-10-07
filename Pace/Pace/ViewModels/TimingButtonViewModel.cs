@@ -14,7 +14,8 @@ namespace Pace.ViewModels
     public partial class TimingButtonViewModel : ObservableObject
     {
         public bool IsClickedTimingButton { get; set; } = false;
-        private double _passedTime = 0;
+        public int TotalPassedTime { get; set; }
+        private int _passedTime = 0;
         private readonly System.Timers.Timer _timer;
         [ObservableProperty]
         string? _timingButtonText = "开始任务!";
@@ -38,6 +39,7 @@ namespace Pace.ViewModels
             {
                 _timer.Stop();
                 IsClickedTimingButton = false;
+                TotalPassedTime += _passedTime;
                 _passedTime = 0;
                 TimingButtonText = "开始任务!";
 

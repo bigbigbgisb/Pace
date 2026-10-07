@@ -14,5 +14,9 @@ namespace Pace.Views
             DataContext = _viewModel;
             InitializeComponent();
         }
+        public ProfilePage()
+        {
+            _viewModel = null!;
+        }
     }
 }

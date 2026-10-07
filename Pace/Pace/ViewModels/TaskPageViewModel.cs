@@ -16,6 +16,8 @@ namespace Pace.ViewModels
     public partial class TaskPageViewModel : ObservableObject
     {
         private readonly ImageLoader _imageLoader = new();
+        private int _burnedCalories;
+
         [ObservableProperty]
         TimingButtonViewModel _timingButtonViewModel = new();
         [ObservableProperty]
@@ -24,6 +26,8 @@ namespace Pace.ViewModels
         MainViewViewModel mainViewViewModel;
         [ObservableProperty]
         int _index = 0;
+        
+
         [ObservableProperty]
         Bitmap[]? _currentImages;
         [ObservableProperty]
@@ -52,8 +56,24 @@ namespace Pace.ViewModels
                         await LoadImagesAsync();
 
                     }, MainViewViewModel.TaskPage);
+                    MainViewViewModel.MainViewModel.UserProfile.BurnedCalories += DailySport.SportItems[Index - 1].BurnedCalories;
+                    _burnedCalories += DailySport.SportItems[Index - 1].BurnedCalories;
+                }
+                else
+                {
+                    MainViewViewModel.MainViewModel.UserProfile.BurnedCalories += DailySport.SportItems[Index - 1].BurnedCalories;
+                    _burnedCalories += DailySport.SportItems[Index - 1].BurnedCalories;
+                    if (!MainViewViewModel.MainViewModel.UserProfile.HasTodayCheckedIn) 
+                    {
+                        MainViewViewModel.MainViewModel.UserProfile.WiningStreakDays++;
+                        MainViewViewModel.MainViewModel.UserProfile.HasTodayCheckedIn = true;
+                    }
+                    //跳转至成功页
+                    MainViewViewModel.CurrentPage = new TaskSuccessPage(_burnedCalories, Index + 1, TimingButtonViewModel.TotalPassedTime, MainViewViewModel);
+                    MainViewViewModel.MainViewModel.ApplicationDataService.WriteData(MainViewViewModel.MainViewModel, MainViewViewModel.MainViewModel.BaseDirectoryPath);
                     
                 }
+    
             }
             await TimingButtonViewModel.ToggleTiming();
 

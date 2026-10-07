@@ -1,0 +1,75 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="using:Pace.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Pace.ViewModels.TaskSuccessPage"
+             x:DataType="views:MainViewViewModel"
+             Background="{Binding MainViewModel.ThemeViewModel.ObsidianColor}"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Margin="12" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Image Source="avares://Pace/Assets/SuccessPageImages/Trophy.png" RenderOptions.BitmapInterpolationMode="None" Height="128" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+            <TextBlock Grid.Row="1" Text="恭喜!" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}"  FontSize="24"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Margin="12" Grid.Column="0" Background="{Binding MainViewModel.ThemeViewModel.DarkColor}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontSize="16" Text="⌚️" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="用时" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}"  FontSize="16"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" x:Name="Time" FontSize="16" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+            </Border>
+            <Border Margin="12" Grid.Column="1" Background="{Binding MainViewModel.ThemeViewModel.DarkColor}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontSize="16" Text="🔥" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="消耗热量(kcal)" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}"  FontSize="16"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" x:Name="Calories" FontSize="16" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+            </Border>
+            <Border Margin="12" Grid.Column="2" Background="{Binding MainViewModel.ThemeViewModel.DarkColor}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontSize="16" Text="🎯" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="完成任务(个)" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}"  FontSize="16"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" x:Name="TaskCount" FontSize="16" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+            </Border>
+
+        </Grid>
+        <Button Click="ConfirmButton_Clicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="4" Margin="12" FontSize="18" Background="{Binding MainViewModel.ThemeViewModel.ThemeColor}" Foreground="{Binding MainViewModel.ThemeViewModel.LightForeground}" Content="Yesssss!"></Button>
+    </Grid>
+</UserControl>
